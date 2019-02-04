@@ -20,6 +20,13 @@ function varSetup() {
     chances = 9;
 }
 
+function displayScreen() {
+    directionsText.textContent = "Guess what letter I am thinking of!";
+    winsText.textContent = "wins: " + wins;
+    lossesText.textContent = "losses: " + losses;
+    chanceText.textContent = "Guess Left: " + chances;
+    myoptionsText.textContent = ` Your Guesses So far:  ${myoptions}`;
+}
 //Initialise the Game
 setup();
 varSetup();
@@ -60,10 +67,6 @@ document.onkeyup = function (event) {
             varSetup();
         }
         // Logging on the screen
-        directionsText.textContent = "Guess what letter I am thinking of!";
-        winsText.textContent = "wins: " + wins;
-        lossesText.textContent = "losses: " + losses;
-        chanceText.textContent = "Guess Left: " + chances;
-        myoptionsText.textContent = ` Your Guesses So far:  ${myoptions}`;
+       displayScreen();
     }
 }
