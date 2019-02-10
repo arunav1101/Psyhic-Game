@@ -3,8 +3,6 @@ function computerChoice() {
     let computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
     return computerGuess;
 }
-// Creates an array that lists out all of the options (Rock, Paper, or Scissors).
-// var computerChoices = [a-z];
 
 var wins, losses, chances, computerGuess, userGuess, myoptions = [];
 
@@ -41,12 +39,10 @@ var chanceText = document.getElementById("chance-text");
 var myoptionsText = document.getElementById("myoptions-text");
 // This function is run whenever the user presses a key.
 computerGuess = computerChoice();
+console.log('Computer Chose==>', computerGuess);
 document.onkeyup = function (event) {
     // regex to match wrong key event
-    if (event.key.match(/[!@#$%^&*(),.?":{}|<> 0-9]/g)) {
-        alert('Enter From a-z');
-    } else {
-        console.log('Computer Chose==>', computerGuess);
+    if (event.key.match(/^[A-z]$/g)) {
         // Determines which key was pressed.
         userGuess = event.key;
         console.log('User Chose==>', userGuess);
@@ -58,15 +54,19 @@ document.onkeyup = function (event) {
             varSetup();
             computerGuess = computerChoice();
             alert('Awesome! You Got Me!')
+            console.log('Computer Chose==>', computerGuess);
         } else {
             chances -= 1;
         }
         if (chances <= 0) {
             losses++;
             computerGuess = computerChoice();
+            console.log('Computer Chose==>', computerGuess);
             varSetup();
         }
         // Logging on the screen
-       displayScreen();
+        displayScreen();
+    } else {
+        alert('Enter From a-z');
     }
 }
